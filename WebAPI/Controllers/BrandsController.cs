@@ -25,8 +25,8 @@ namespace WebAPI.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            var resul = _service.GetById(id);
-            return Ok(resul);
+            var result = _service.GetById(id);
+            return Ok(result);
         }
         [HttpPost()]
         public void Add(Brand brand)

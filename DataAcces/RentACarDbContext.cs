@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
@@ -45,6 +46,15 @@ namespace DataAccess
                     .OnDelete(DeleteBehavior.Restrict)
                     .IsRequired();
             });
+            modelBuilder.Entity<CarImage>(image =>
+            {
+                image.HasIndex(i => i.CarId).IsDescending().IsUnique(false);
+                image.HasOne<Car>()
+                    .WithMany()
+                    .HasForeignKey(i => i.CarId)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .IsRequired();
+            });
         }
 
         //db set yapılmazsa entity clasları veri tabanı nesnesi oludugunu anlamaz
@@ -52,6 +62,7 @@ namespace DataAccess
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Color> Colors { get; set; }
         public DbSet<Rental> Rentals { get; set; }
-     
+        public DbSet<CarImage> CarImages { get; set; }
+
     }
 }
