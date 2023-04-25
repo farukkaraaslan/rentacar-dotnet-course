@@ -27,7 +27,27 @@ namespace DataAccess
             optionsBuilder.UseNpgsql(connectionString);
         }
 
-        //db set yapılmazsa entityclasları veri tabanı nesnesi oludugunu anlamaz
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Car>(car =>
+            {
+                car.HasOne<Brand>()
+                    .WithMany()// birden fazla aracı temsil eder
+                    .HasForeignKey(c => c.BrandId)
+                    .OnDelete(DeleteBehavior.Restrict)// markaya baglı aracları silmeden markayı sildirmez.silerkenki davranısı temsil eder
+                    .IsRequired();// geçerli bir brandId controlü yapar
+            });
+            modelBuilder.Entity<Car>(car =>
+            {
+                car.HasOne<Color>()
+                    .WithMany()
+                    .HasForeignKey(c=>c.ColorId)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .IsRequired();
+            });
+        }
+
+        //db set yapılmazsa entity clasları veri tabanı nesnesi oludugunu anlamaz
         public DbSet<Car> Cars { get; set; }     
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Color> Colors { get; set; }
