@@ -2,6 +2,7 @@
 
 using Business.Absract;
 using Business.Concrete;
+using Business.DependencyResolvers;
 using Business.Rules;
 using Business.Rules.Validation.FluentValidation;
 using Core.DataAccess;
@@ -15,18 +16,8 @@ using Microsoft.AspNetCore.Diagnostics;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddSingleton<IBrandDal, EfBrandDal>()
-    .AddSingleton<IBrandService, BrandManager>()
-    .AddSingleton<BrandBusinesRules>()
-    .AddSingleton<CarBusinessRules>()
-    .AddSingleton<ColorBusinessRules>()
-    .AddSingleton<BrandValidator>()
-    .AddSingleton<CarValidator>()
-    .AddSingleton<ColorValidator>()
-    .AddSingleton<ICarDal,EfCarDal>()
-    .AddSingleton<ICarService,CarManager>()
-    .AddSingleton<IColorDal,EfColorDal>()
-    .AddSingleton<IColorService,ColorManager>();
+// register býsines service clasýna alarak program.cs temizlendi.
+builder.Services.RegisterBusinessService();
 
 //builder.Services.AddTransient<ITestService, TestManager>();
 builder.Services.AddControllers();
@@ -36,7 +27,7 @@ builder.Services.AddSwaggerGen();
 
 
 var app = builder.Build();
-
+//exception handler yapildi
 app.UseMiddleware<ExceptionMiddleware>();
 
 // Configure the HTTP request pipeline.
