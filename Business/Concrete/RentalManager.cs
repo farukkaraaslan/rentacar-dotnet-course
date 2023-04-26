@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Business.Absract;
+using Business.Rules;
 using DataAccess.Abstract;
 using Entities;
 
@@ -12,10 +13,11 @@ namespace Business.Concrete
     public class RentalManager :IRentalService
     {
         private readonly IRentalDal _rentalDal;
-
-        public RentalManager(IRentalDal rentalDal)
+        private readonly CarBusinessRules _carBusinessRules;
+        public RentalManager(IRentalDal rentalDal,CarBusinessRules carBusinessRules)
         {
             _rentalDal=rentalDal;
+            _carBusinessRules = carBusinessRules;
         }
         public List<Rental> GetAll()
         {
@@ -34,7 +36,11 @@ namespace Business.Concrete
 
         public void Add(Rental rental)
         {
+            _carBusinessRules.IsCarCanRentCar(rental.CarId);
+            _carBusinessRules.IsCarUpdateState(rental.CarId,CarState.Rented);
+            rental.TotalPrice = rental.RentalDay * rental.DailyPrice;
             _rentalDal.Add(rental);
+           
         }
 
         public void Update(Rental rental)

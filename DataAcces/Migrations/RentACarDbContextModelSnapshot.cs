@@ -94,7 +94,6 @@ namespace DataAccess.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Path")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -135,6 +134,9 @@ namespace DataAccess.Migrations
 
                     b.Property<double>("DailyPrice")
                         .HasColumnType("double precision");
+
+                    b.Property<int>("RentalDay")
+                        .HasColumnType("integer");
 
                     b.Property<DateTime>("RentalEndTime")
                         .HasColumnType("timestamp with time zone");

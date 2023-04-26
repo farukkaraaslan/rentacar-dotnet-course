@@ -18,6 +18,7 @@ namespace Business.Constants
             public static string AllReadyExists = "CAR_ALL_READY_EXİSTS";
             public static string PlateIsValid = "PLATE_IS_NOT_VALID";
             public static string NotExists = "CAR_NOT_EXISTS";
+            public static string NotRental = "CAR_NOT_RENTAL";
         }
 
         public static class Color

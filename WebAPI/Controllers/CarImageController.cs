@@ -1,10 +1,11 @@
 ﻿using Business.Absract;
+using Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
 {
     [ApiController]
-    [Route("api/carimages")]
+    [Route("api/cars/images")]
     public class CarImageController : Controller
     {
         private readonly ICarImageService _carImageService;
@@ -13,6 +14,17 @@ namespace WebAPI.Controllers
         {
             _carImageService=carImageService;
         }
+        [HttpPost]
+        public void Add([FromForm] CarImage carImage, [FromForm(Name = "image")] IFormFile formFile)
+        {
+            _carImageService.Add(carImage, formFile);
+        }
+
+        [HttpPut]
+        public void Update([FromForm] CarImage carImage, [FromForm(Name="image")] IFormFile formFile)
+        {
+            _carImageService.Update(carImage, formFile);
+        }
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -20,7 +32,7 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
 
-        [HttpGet("{id")]
+        [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
             var result = _carImageService.GetById(id);

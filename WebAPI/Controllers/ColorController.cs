@@ -43,7 +43,7 @@ namespace WebAPI.Controllers
         {
             _service.Delete(id);
         }
-        [HttpGet("barand")]
+        [HttpGet("brand")]
         public IActionResult GetByName([FromQuery] string name)
         {
             var result = _service.GetByName(name);

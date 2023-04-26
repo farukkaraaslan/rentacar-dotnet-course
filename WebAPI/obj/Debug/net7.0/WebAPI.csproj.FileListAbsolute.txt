@@ -113,3 +113,4 @@ C:\Users\faruk\Desktop\C#_Eğitim\RentACar-Backend\WebAPI\bin\Debug\net7.0\Micro
 C:\Users\faruk\Desktop\C#_Eğitim\RentACar-Backend\WebAPI\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
 C:\Users\faruk\Desktop\C#_Eğitim\RentACar-Backend\WebAPI\bin\Debug\net7.0\Mono.TextTemplating.dll
 C:\Users\faruk\Desktop\C#_Eğitim\RentACar-Backend\WebAPI\bin\Debug\net7.0\System.CodeDom.dll
+C:\Users\faruk\Desktop\C#_Eğitim\RentACar-Backend\WebAPI\bin\Debug\net7.0\WebAPI.staticwebassets.runtime.json

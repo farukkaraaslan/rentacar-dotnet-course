@@ -14,6 +14,7 @@ using DataAccess.Concrete.EntityFramework;
 using Microsoft.AspNetCore.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
+//AppContext.SetSwitch("Np");
 
 // Add services to the container.
 // register býsines service clasýna alarak program.cs temizlendi.
