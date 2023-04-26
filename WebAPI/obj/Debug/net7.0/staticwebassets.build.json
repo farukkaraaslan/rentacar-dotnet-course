@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "MxmPIC1o0ZottH4zfKqFI0EhXNhOJMBavgV4cp8Le7I=",
+  "Hash": "jhqOGF85QItl+/EMMakNo9YqWDu6EEL123dtMu184yE=",
   "Source": "WebAPI",
   "BasePath": "_content/WebAPI",
   "Mode": "Default",
@@ -15,5 +15,23 @@
       "Pattern": "**"
     }
   ],
-  "Assets": []
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\faruk\\Desktop\\C#_Eğitim\\RentACar-Backend\\WebAPI\\wwwroot\\images\\64232977-608f-450a-a50e-5973e0e50e73.png",
+      "SourceId": "WebAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\faruk\\Desktop\\C#_Eğitim\\RentACar-Backend\\WebAPI\\wwwroot\\",
+      "BasePath": "_content/WebAPI",
+      "RelativePath": "images/64232977-608f-450a-a50e-5973e0e50e73.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\64232977-608f-450a-a50e-5973e0e50e73.png"
+    }
+  ]
 }

@@ -61,18 +61,13 @@ namespace Business.Rules
             }
         }
         // arac kiralanmış yada bakımdaysa arac kiralanamaz
-        public void IsCarCanRentCar(int carId)
-        {
-            var car = _carDal.Get(c => c.Id == carId);
-            if (car.State==CarState.Rented)
-            {
-                throw new BusinessException(Messagess.Car.NotRental);
-            }
-            if (car.State == CarState.Maintenance)
-            {
-                throw new BusinessException(Messagess.Car.NotRental);
-            }
-        }
+        //public void CheckIfCarAvailable(Car car)
+        //{
+        //    if (car.State != CarState.Available)
+        //    {
+        //        throw new BusinessException(Messagess.Car.CarNotAvailable);
+        //    }
+        //}
         public void IsCarUpdateState(int carId, CarState rentalState)
         {
             var car = _carDal.Get(c => c.Id == carId);

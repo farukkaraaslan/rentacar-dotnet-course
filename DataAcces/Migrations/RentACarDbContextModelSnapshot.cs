@@ -135,19 +135,22 @@ namespace DataAccess.Migrations
                     b.Property<double>("DailyPrice")
                         .HasColumnType("double precision");
 
-                    b.Property<int>("RentalDay")
+                    b.Property<DateTime?>("RentalEndDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("RentalStartDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("RentedForDays")
                         .HasColumnType("integer");
-
-                    b.Property<DateTime>("RentalEndTime")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime>("RentalStartTime")
-                        .HasColumnType("timestamp with time zone");
 
                     b.Property<double>("TotalPrice")
                         .HasColumnType("double precision");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CarId")
+                        .IsDescending();
 
                     b.ToTable("Rentals");
                 });
@@ -168,6 +171,15 @@ namespace DataAccess.Migrations
                 });
 
             modelBuilder.Entity("Entities.CarImage", b =>
+                {
+                    b.HasOne("Entities.Car", null)
+                        .WithMany()
+                        .HasForeignKey("CarId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Entities.Rental", b =>
                 {
                     b.HasOne("Entities.Car", null)
                         .WithMany()

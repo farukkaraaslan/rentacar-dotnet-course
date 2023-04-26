@@ -11,11 +11,11 @@ namespace Entities
     {
         public int Id { get; set; }
         public int CarId { get; set; }
-        public int RentalDay { get; set; }
+        public int RentedForDays{ get; set; }
         public double DailyPrice { get; set; }
         public double TotalPrice { get; set; } = 0;
-        public DateTime RentalStartTime { get; set; }
-        public DateTime RentalEndTime { get; set; }
+        public DateTime RentalStartDate { get; set; }
+        public DateTime? RentalEndDate { get; set; }
 
     }
 }

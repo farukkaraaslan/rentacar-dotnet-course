@@ -55,6 +55,15 @@ namespace DataAccess
                     .OnDelete(DeleteBehavior.Restrict)
                     .IsRequired();
             });
+            modelBuilder.Entity<Rental>(car =>
+            {
+                car.HasIndex(i => i.CarId).IsDescending().IsUnique(false);
+                car.HasOne<Car>()
+                    .WithMany()
+                    .HasForeignKey(i => i.CarId)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .IsRequired();
+            });
         }
 
         //db set yapılmazsa entity clasları veri tabanı nesnesi oludugunu anlamaz
@@ -63,6 +72,7 @@ namespace DataAccess
         public DbSet<Color> Colors { get; set; }
         public DbSet<Rental> Rentals { get; set; }
         public DbSet<CarImage> CarImages { get; set; }
+        public DbSet<Payment> Payments { get; set; }
 
     }
 }

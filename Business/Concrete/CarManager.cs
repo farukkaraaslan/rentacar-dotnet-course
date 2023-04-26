@@ -1,5 +1,6 @@
 ﻿using Business.Absract;
 using Business.Rules;
+using Core.Exceptions;
 using DataAccess.Abstract;
 using Entities;
 using Entities.Dto;
@@ -32,6 +33,14 @@ namespace Business.Concrete
             _rules.CheckIfCarExist(id);
             _carDal.Delete(id);
         }
+
+        public void ChanceState(int carId, CarState carState)
+        {
+             var car =GetById(carId);
+             car.State = carState;
+             _carDal.Update(car);
+        }
+
         public void Update(Car car)
         {
             _rules.CheckIfCarExist(car.Id);

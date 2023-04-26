@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Business.Absract;
+using Business.Constants;
 using Business.Rules;
+using Core.Exceptions;
 using DataAccess.Abstract;
 using Entities;
 
@@ -13,11 +15,13 @@ namespace Business.Concrete
     public class RentalManager :IRentalService
     {
         private readonly IRentalDal _rentalDal;
-        private readonly CarBusinessRules _carBusinessRules;
-        public RentalManager(IRentalDal rentalDal,CarBusinessRules carBusinessRules)
+        private readonly ICarService _carService;
+        private readonly RentalBusinesRules _rentalBusinesRules;
+        public RentalManager(IRentalDal rentalDal,ICarService carService, RentalBusinesRules rentalBusinesRules)
         {
-            _rentalDal=rentalDal;
-            _carBusinessRules = carBusinessRules;
+            _rentalDal = rentalDal;
+            _carService = carService;
+            _rentalBusinesRules = rentalBusinesRules;
         }
         public List<Rental> GetAll()
         {
@@ -36,10 +40,14 @@ namespace Business.Concrete
 
         public void Add(Rental rental)
         {
-            _carBusinessRules.IsCarCanRentCar(rental.CarId);
-            _carBusinessRules.IsCarUpdateState(rental.CarId,CarState.Rented);
-            rental.TotalPrice = rental.RentalDay * rental.DailyPrice;
+            _rentalBusinesRules.CheckIfCarAvailable(_carService.GetById(rental.CarId).State);
+           
+            rental.TotalPrice = rental.RentedForDays * rental.DailyPrice;
+            rental.RentalStartDate = DateTime.Now;
+            rental.RentalEndDate = null;
             _rentalDal.Add(rental);
+            _carService.ChanceState(rental.CarId, CarState.Rented);
+            
            
         }
 
@@ -50,7 +58,10 @@ namespace Business.Concrete
 
         public void Delete(int id)
         {
+            var rental = GetById(id);
+            _carService.ChanceState(rental.CarId, CarState.Available);
             _rentalDal.Delete(id);
+            
         }
     }
 }

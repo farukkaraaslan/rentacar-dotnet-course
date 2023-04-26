@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
 //AppContext.SetSwitch("Np");
-
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 // Add services to the container.
 // register býsines service clasýna alarak program.cs temizlendi.
 builder.Services.RegisterBusinessService();
@@ -39,6 +39,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+// resimlerin tarayýcýda görüntülenebilmesi için eklendi
+app.UseStaticFiles();
 
 app.UseAuthorization();
 

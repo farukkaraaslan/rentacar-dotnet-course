@@ -20,7 +20,9 @@ namespace Business.Absract
         void Add(Car car);  
         void Update(Car car);
         void Delete(int id);
-       
+
+        void ChanceState(int carId, CarState carState);
+
 
     }
 }

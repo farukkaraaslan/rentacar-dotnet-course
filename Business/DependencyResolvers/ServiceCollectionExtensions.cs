@@ -27,6 +27,7 @@ namespace Business.DependencyResolvers
                 .AddSingleton<IColorService, ColorManager>()
                 .AddSingleton<IRentalDal, EfRentalDal>()
                 .AddSingleton<IRentalService, RentalManager>()
+                .AddSingleton<RentalBusinesRules>()
                 .AddSingleton<ICarImageDal, EfCarImageDal>()
                 .AddSingleton<ICarImageService, CarImageManager>()
                 .AddSingleton<CarBusinessRules>()
