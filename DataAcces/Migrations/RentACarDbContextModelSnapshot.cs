@@ -91,7 +91,7 @@ namespace DataAccess.Migrations
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Path")
                         .HasColumnType("text");
@@ -121,6 +121,84 @@ namespace DataAccess.Migrations
                     b.ToTable("Colors");
                 });
 
+            modelBuilder.Entity("Entities.Invoice", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("BrandName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("CardHolder")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<double>("DailyPrice")
+                        .HasColumnType("double precision");
+
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("ModelYear")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Plate")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("RentedAt")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("RentedForDays")
+                        .HasColumnType("integer");
+
+                    b.Property<double>("TotalPrice")
+                        .HasColumnType("double precision");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Invoices");
+                });
+
+            modelBuilder.Entity("Entities.Payment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<double>("Balance")
+                        .HasColumnType("double precision");
+
+                    b.Property<string>("CardCvv")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("CardExpirationMonth")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("CardExpirationYear")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("CardHolder")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("CardNumber")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Payments");
+                });
+
             modelBuilder.Entity("Entities.Rental", b =>
                 {
                     b.Property<int>("Id")
@@ -136,10 +214,10 @@ namespace DataAccess.Migrations
                         .HasColumnType("double precision");
 
                     b.Property<DateTime?>("RentalEndDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<DateTime>("RentalStartDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<int>("RentedForDays")
                         .HasColumnType("integer");

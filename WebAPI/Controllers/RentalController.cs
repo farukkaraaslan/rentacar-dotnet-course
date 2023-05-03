@@ -1,5 +1,6 @@
-﻿using Business.Absract;
+﻿using Business.Abstract;
 using Entities;
+using Entities.Dto;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
@@ -29,9 +30,9 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
         [HttpPost()]
-        public void Add(Rental rental)
+        public void Add(RentalDto rentalDto)
         {
-            _rentalService.Add(rental);
+            _rentalService.Add(rentalDto);
         }
 
         [HttpPut()]

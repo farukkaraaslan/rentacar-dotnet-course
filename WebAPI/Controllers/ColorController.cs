@@ -1,4 +1,4 @@
-﻿using Business.Absract;
+﻿using Business.Abstract;
 using Entities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -42,12 +42,6 @@ namespace WebAPI.Controllers
         public void Delete(int id)
         {
             _service.Delete(id);
-        }
-        [HttpGet("brand")]
-        public IActionResult GetByName([FromQuery] string name)
-        {
-            var result = _service.GetByName(name);
-            return Ok(result);
         }
     }
 }

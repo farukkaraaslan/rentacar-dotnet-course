@@ -1,4 +1,4 @@
-﻿using Business.Constants;
+﻿using Core.Utilities.Constants;
 using Business.Rules.Validation.FluentValidation;
 using DataAccess.Abstract;
 using Entities;
@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Core.Exceptions;
+using FluentValidation;
 
 namespace Business.Rules
 {
@@ -30,7 +31,7 @@ namespace Business.Rules
             if (!result.IsValid)
             {
                var errorMessages =string.Join("\n", result.Errors.Select(e=>$"{e.PropertyName}: {e.ErrorMessage}"));
-                throw new Exception(errorMessages);
+                throw new ValidationException(errorMessages);
             }
         }
        public void CheckIfExistBrandByName(string brandName)

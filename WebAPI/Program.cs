@@ -1,8 +1,9 @@
 
 
-using Business.Absract;
+using Business.Abstract;
 using Business.Concrete;
 using Business.DependencyResolvers;
+using Business.Mappers;
 using Business.Rules;
 using Business.Rules.Validation.FluentValidation;
 using Core.DataAccess;
@@ -14,12 +15,22 @@ using DataAccess.Concrete.EntityFramework;
 using Microsoft.AspNetCore.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
-//AppContext.SetSwitch("Np");
+//Tarih iþlemleriiçin
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 // Add services to the container.
 // register býsines service clasýna alarak program.cs temizlendi.
 builder.Services.RegisterBusinessService();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "AllowAnyOrigin",
+        builder => builder
+        .AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader());
+});
+// maping baslatmak için Auoto mapper Dependency incetion paketi ile kullandýk
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 //builder.Services.AddTransient<ITestService, TestManager>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

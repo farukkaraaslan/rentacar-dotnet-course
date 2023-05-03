@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Business.Constants;
+using Core.Utilities.Constants;
 using Business.Rules.Validation.FluentValidation;
 using Core.Exceptions;
 using DataAccess.Abstract;
-using static Business.Constants.Messagess;
+using static Core.Utilities.Constants.Messagess;
 using Color = Entities.Color;
 
 namespace Business.Rules

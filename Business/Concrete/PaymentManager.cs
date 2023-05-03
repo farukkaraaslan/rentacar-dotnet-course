@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Business.Absract;
+using Business.Abstract;
 using Business.Rules;
 using Core.Exceptions;
 using DataAccess.Abstract;
@@ -36,11 +36,8 @@ namespace Business.Concrete
 
         public void Add(Payment payment)
         {
-            if (_paymentDal.Get(p=> p.CardNumber== payment.CardNumber)!= null)
-            {
-                throw new BusinessException("NT_A_VALID_CARD");
-
-            }
+            _paymentBusinessRules.CheckIfCadAllReadyExists(payment.CardNumber);
+            _paymentBusinessRules.ValidatePayment(payment);
             _paymentDal.Add(payment);
         }
 

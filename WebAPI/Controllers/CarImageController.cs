@@ -1,4 +1,4 @@
-﻿using Business.Absract;
+﻿using Business.Abstract;
 using Entities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,17 +14,7 @@ namespace WebAPI.Controllers
         {
             _carImageService=carImageService;
         }
-        [HttpPost]
-        public void Add([FromForm] CarImage carImage, [FromForm(Name = "image")] IFormFile formFile)
-        {
-            _carImageService.Add(carImage, formFile);
-        }
 
-        [HttpPut]
-        public void Update([FromForm] CarImage carImage, [FromForm(Name="image")] IFormFile formFile)
-        {
-            _carImageService.Update(carImage, formFile);
-        }
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -38,5 +28,26 @@ namespace WebAPI.Controllers
             var result = _carImageService.GetById(id);
             return Ok(result);
         }
+
+        [HttpPost]
+        public void Add([FromForm] CarImage carImage, [FromForm(Name = "image")] IFormFile formFile)
+        {
+            _carImageService.Add(carImage, formFile);
+        }
+
+        [HttpPut]
+        public void Update([FromForm] CarImage carImage, [FromForm(Name="image")] IFormFile formFile)
+        {
+            _carImageService.Update(carImage, formFile);
+        }
+
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+            _carImageService.Delete(id);
+        }
+
+
+
     }
 }

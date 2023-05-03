@@ -1,4 +1,4 @@
-﻿using Business.Absract;
+﻿using Business.Abstract;
 using Business.Rules;
 using Core.Exceptions;
 using DataAccess.Abstract;
@@ -12,6 +12,7 @@ namespace Business.Concrete
     {
         private readonly ICarDal _carDal;
         private readonly CarBusinessRules _rules;
+       
 
         public CarManager(ICarDal carDal,CarBusinessRules rules)
         {
@@ -25,6 +26,7 @@ namespace Business.Concrete
             _rules.CheckIfCarExistByPlate(car.Plate);
             _rules.CheckIfPlateIsValid(car.Plate);
             car.State = CarState.Available;
+           
             _carDal.Add(car);
         }
 
@@ -61,6 +63,10 @@ namespace Business.Concrete
         {
             return _carDal.GetCarDetails();
         }
+        public CarDetailDto GetCarDetailById(int id)
+        {
+            return _carDal.GetCarDetailById(id);
+        }
 
         //public List<Car> GetCarsByBrandId(int brandId)
         //{
@@ -88,5 +94,7 @@ namespace Business.Concrete
 
             return cars;
         }
+
+      
     }
 }

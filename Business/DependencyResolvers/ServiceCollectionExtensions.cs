@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Business.Absract;
+using Business.Abstract;
 using Business.Concrete;
 using Business.Rules;
 using Business.Rules.Validation.FluentValidation;
@@ -18,24 +18,44 @@ namespace Business.DependencyResolvers
     {
         public static IServiceCollection RegisterBusinessService(this IServiceCollection services)
         {
-            services.AddSingleton<IBrandDal, EfBrandDal>()
+            services
+                .AddSingleton<IBrandDal, EfBrandDal>()
                 .AddSingleton<IBrandService, BrandManager>()
                 .AddSingleton<BrandBusinesRules>()
+                .AddSingleton<BrandValidator>()
+
                 .AddSingleton<ICarDal, EfCarDal>()
                 .AddSingleton<ICarService, CarManager>()
+                .AddSingleton<CarBusinessRules>()
+                .AddSingleton<CarValidator>()
+
                 .AddSingleton<IColorDal, EfColorDal>()
                 .AddSingleton<IColorService, ColorManager>()
+                .AddSingleton<ColorBusinessRules>()
+                .AddSingleton<ColorValidator>()
+
                 .AddSingleton<IRentalDal, EfRentalDal>()
                 .AddSingleton<IRentalService, RentalManager>()
-                .AddSingleton<RentalBusinesRules>()
+                .AddSingleton<RentalBusinessRules>()
+
                 .AddSingleton<ICarImageDal, EfCarImageDal>()
                 .AddSingleton<ICarImageService, CarImageManager>()
-                .AddSingleton<CarBusinessRules>()
-                .AddSingleton<ColorBusinessRules>()
-                .AddSingleton<BrandValidator>()
-                .AddSingleton<CarValidator>()
-                .AddSingleton<ColorValidator>()
-                .AddSingleton<IFileHelper, FileHelper>();
+                .AddSingleton<IFileHelper, FileHelper>()
+
+                .AddSingleton<IPaymentDal, EfPaymentDal>()
+
+
+                .AddSingleton<IPaymentService, PaymentManager>()
+                .AddSingleton<PaymentBusinessRules>()
+                .AddSingleton<PaymentValidator>()
+                .AddSingleton<PaymentDtoValidator>()
+                
+                .AddSingleton<IInvoiceDal, EfInvoiceDal>()
+                .AddSingleton<IInvoiceService, InvoiceManager>()
+                
+                ;
+
+               
                     
             return services;
         }

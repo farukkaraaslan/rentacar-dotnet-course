@@ -1,5 +1,4 @@
-﻿using Business.Absract;
-using DataAccess.Abstract;
+﻿using DataAccess.Abstract;
 using Entities;
 using System;
 using System.Collections.Generic;
@@ -8,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Business.Rules;
 using System.Globalization;
+using Business.Abstract;
 
 namespace Business.Concrete
 {
@@ -16,23 +16,25 @@ namespace Business.Concrete
         private readonly IColorDal _colorDal;
         private readonly ColorBusinessRules _rules;
 
-        public ColorManager(IColorDal colorDal,ColorBusinessRules rules)
+        public ColorManager(IColorDal colorDal
+            //ColorBusinessRules rules
+            )
         {
             _colorDal = colorDal;
-            _rules = rules;
+            //_rules = rules;
         }
 
         public void Add(Color color)
         {
-            _rules.ValidateColor(color);
-            _rules.CheckIfExistColorByName(color.Name);
+            //_rules.ValidateColor(color);
+            //_rules.CheckIfExistColorByName(color.Name);
             CapitalizeColorName(color);
             _colorDal.Add(color);
         }
 
         public void Delete(int id)
         {
-            _rules.CheckIfColorExist(id);
+            //_rules.CheckIfColorExist(id);
           _colorDal.Delete(id);
         }
 
@@ -43,7 +45,7 @@ namespace Business.Concrete
 
         public Color GetById(int id)
         {
-            _rules.CheckIfColorExist(id);
+            //_rules.CheckIfColorExist(id);
             return _colorDal.Get(c => c.Id == id);
         }
 
@@ -54,7 +56,7 @@ namespace Business.Concrete
 
         public void Update(Color color)
         {
-            _rules.CheckIfColorExist(color.Id);
+            //_rules.CheckIfColorExist(color.Id);
             CapitalizeColorName(color);
             _colorDal.Update(color);
         }

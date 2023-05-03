@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\images\\64232977-608f-450a-a50e-5973e0e50e73.png"
     },
     {
+      "Id": "C:\\Users\\faruk\\Desktop\\C#_Eğitim\\RentACar-Backend\\WebAPI\\wwwroot\\images\\default_images.png",
+      "PackagePath": "staticwebassets\\images\\default_images.png"
+    },
+    {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.WebAPI.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

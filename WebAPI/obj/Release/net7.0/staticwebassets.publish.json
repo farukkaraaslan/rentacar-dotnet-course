@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "Hash": "tNcfHo09aqcEI7smoR4oeEn2+qZV0JoeBb50/rQqy5Q=",
+  "Source": "WebAPI",
+  "BasePath": "_content/WebAPI",
+  "Mode": "Default",
+  "ManifestType": "Publish",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "WebAPI\\wwwroot",
+      "Source": "WebAPI",
+      "ContentRoot": "C:\\Users\\faruk\\Desktop\\C#_Eğitim\\RentACar-Backend\\WebAPI\\wwwroot\\",
+      "BasePath": "_content/WebAPI",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\faruk\\Desktop\\C#_Eğitim\\RentACar-Backend\\WebAPI\\wwwroot\\images\\64232977-608f-450a-a50e-5973e0e50e73.png",
+      "SourceId": "WebAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\faruk\\Desktop\\C#_Eğitim\\RentACar-Backend\\WebAPI\\wwwroot\\",
+      "BasePath": "_content/WebAPI",
+      "RelativePath": "images/64232977-608f-450a-a50e-5973e0e50e73.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\64232977-608f-450a-a50e-5973e0e50e73.png"
+    },
+    {
+      "Identity": "C:\\Users\\faruk\\Desktop\\C#_Eğitim\\RentACar-Backend\\WebAPI\\wwwroot\\images\\default_images.png",
+      "SourceId": "WebAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\faruk\\Desktop\\C#_Eğitim\\RentACar-Backend\\WebAPI\\wwwroot\\",
+      "BasePath": "_content/WebAPI",
+      "RelativePath": "images/default_images.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\default_images.png"
+    }
+  ]
+}

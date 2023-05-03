@@ -1,4 +1,4 @@
-﻿using Business.Absract;
+﻿using Business.Abstract;
 using Business.Rules;
 using DataAccess.Abstract;
 using Entities;

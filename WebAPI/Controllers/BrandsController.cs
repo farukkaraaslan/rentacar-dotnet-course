@@ -1,5 +1,5 @@
 ﻿
-using Business.Absract;
+using Business.Abstract;
 using Business.Concrete;
 using Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -15,7 +15,7 @@ namespace WebAPI.Controllers
         {
             _service = service;
         }
-
+        
         [HttpGet()]
         public IActionResult GetAll()
         {
@@ -28,6 +28,14 @@ namespace WebAPI.Controllers
             var result = _service.GetById(id);
             return Ok(result);
         }
+
+        [HttpGet("brand")]
+        public IActionResult GetByName([FromQuery] string name)
+        {
+            var result = _service.GetByName(name);
+            return Ok(result);
+        }
+
         [HttpPost()]
         public void Add(Brand brand)
         {
@@ -39,16 +47,12 @@ namespace WebAPI.Controllers
         {
             _service.Update(brand);
         }
+
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
             _service.Delete(id);
         }
-        [HttpGet("barand")]
-        public IActionResult GetByName([FromQuery] string name)
-        {
-            var result = _service.GetByName(name);
-            return Ok(result);
-        }
+       
     }
 }
